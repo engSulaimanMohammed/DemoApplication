@@ -2,13 +2,12 @@ package com.cl.demo.controllers;
 
 import com.cl.demo.entities.Task;
 import com.cl.demo.requestobjects.TaskCreateRequest;
+import com.cl.demo.requestobjects.TaskUpdateRequest;
 import com.cl.demo.responseobjects.TaskCreateResponse;
+import com.cl.demo.responseobjects.TaskUpdateResponse;
 import com.cl.demo.services.TaskService;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Map;
@@ -39,6 +38,16 @@ public class TaskController {
         List<Task> taskList = taskService.getAllTasks();
         return TaskCreateResponse.convert(taskList);
     }
+
+    @PutMapping("/update")
+    public TaskUpdateResponse updateTask(@RequestBody TaskUpdateRequest requestObj) {
+        Task task = taskService.updateTask(requestObj);
+        return TaskUpdateResponse.convert(task);
+    }
+
+
+
+
 
 
 
