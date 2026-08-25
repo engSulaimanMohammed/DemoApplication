@@ -14,7 +14,7 @@ import java.util.Map;
 
 public class TaskController {
 
-   // To connect TaskController with TaskService.
+    // To connect TaskController with TaskService.
     @Autowired
     private TaskService taskService;
 
@@ -44,6 +44,17 @@ public class TaskController {
         Task task = taskService.updateTask(requestObj);
         return TaskUpdateResponse.convert(task);
     }
+
+
+    @DeleteMapping("/deleteById")
+    public Boolean deleteById(@RequestParam String id) {
+        return taskService.deleteById(id);
+    }
+
+
+
+
+
 
 
 
