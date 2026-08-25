@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestParam;
 
+import java.util.List;
 import java.util.Map;
 
 public class TaskController {
@@ -30,6 +31,17 @@ public class TaskController {
         Task task = taskService.getTaskById(uuid);
         return TaskCreateResponse.convert(task);
     }
+
+
+    // To get all active Tasks.
+    @GetMapping("/getAll")
+    public List<TaskCreateResponse> getAllTasks() {
+        List<Task> taskList = taskService.getAllTasks();
+        return TaskCreateResponse.convert(taskList);
+    }
+
+
+
 
 
 
