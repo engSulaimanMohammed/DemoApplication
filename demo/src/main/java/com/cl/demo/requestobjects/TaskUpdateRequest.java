@@ -13,19 +13,10 @@ import lombok.Setter;
 @Setter
 
 public class TaskUpdateRequest {
-
     private UUID uuid;
     private String titleToUpdate;
     private String descriptionToUpdate;
     private TaskStatus taskStatusToUpdate;
     private Date dueDateToUpdate;
     private Boolean isAssignedToUpdate;
-
-
-
-
-
-
-
-
 }

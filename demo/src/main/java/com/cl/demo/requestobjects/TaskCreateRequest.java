@@ -19,10 +19,4 @@ public class TaskCreateRequest {
     private Date startDate;
     private TaskStatus taskStatus;
     private Boolean isAssigned;
-
-
-
-
-
-
 }
