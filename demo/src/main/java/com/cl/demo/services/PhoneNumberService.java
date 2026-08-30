@@ -31,7 +31,7 @@ public class PhoneNumberService {
                 return p; // return the num.
             }
         }
-        return new PhoneNumber(); // if not equal return new phone num.
+        return null; // if not equal return new phone num.
     }
 
     public List<PhoneNumber> getAllPhoneNumbers() {
