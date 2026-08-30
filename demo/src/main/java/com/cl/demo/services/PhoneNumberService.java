@@ -60,8 +60,15 @@ public class PhoneNumberService {
 
 
 
-
-
-
-
+    public Boolean deleteById(String uuid) {
+        PhoneNumber phoneNumber = getPhoneNumberById(uuid);
+        if (phoneNumber == null || phoneNumber.getId() == null || !phoneNumber.getIsActive()) {
+            return false;
+        } else {
+            DemoApplication.PhoneNumber_List.remove(phoneNumber);
+            phoneNumber.setIsActive(false);
+            DemoApplication.PhoneNumber_List.add(phoneNumber);
+            return true;
+        }
+    }
 }
