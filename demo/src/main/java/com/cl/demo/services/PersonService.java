@@ -62,7 +62,7 @@ public class PersonService {
 
     public Person getPersonById(String uuid) {
         for (Person p : DemoApplication.Person_List) {
-            if (p.getId().toString().equals(uuid) && p.getIsActive() != false) {
+            if (p.getId().toString().equals(uuid) && p.getIsActive()) {
                 return p;
             }
         }
@@ -128,7 +128,7 @@ public class PersonService {
 
         Person person = getPersonById(uuid);
 
-        if (person == null || person.getId() == null || person.getIsActive() != true) {
+        if (person == null || person.getId() == null || !person.getIsActive()) {
             return false;
         } else {
             DemoApplication.Person_List.remove(person);
