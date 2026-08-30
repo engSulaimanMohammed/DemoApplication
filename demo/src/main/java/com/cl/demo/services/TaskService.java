@@ -22,6 +22,14 @@ public class TaskService {
     // To Add a new Task.
     public Map<String, String> addTask(TaskCreateRequest requestObj) {
         Map<String, String> response = new HashMap<>();
+
+
+        if (requestObj.getTitle() == null || requestObj.getTitle().trim().isEmpty()) {
+            response.put("error", "Title cannot be empty");
+            return response;
+        }
+
+
         Task task = new Task();
 
         // The BaseClass information.
