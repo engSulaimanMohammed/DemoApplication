@@ -42,5 +42,10 @@ public class PhoneNumberController {
         return PhoneNumberUpdateResponse.convert(phoneNumber);
     }
 
+    @DeleteMapping("/deleteById")
+    public Boolean deletePhoneNumberById(@RequestParam String id) {
+        return phoneNumberService.deleteById(id);
+    }
+
 
 }
