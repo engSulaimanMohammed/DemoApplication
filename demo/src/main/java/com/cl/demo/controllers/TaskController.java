@@ -30,6 +30,9 @@ public class TaskController {
     @GetMapping("/getById")
     public TaskCreateResponse getTaskById(@RequestParam String uuid) {
         Task task = taskService.getTaskById(uuid);
+        if (task == null) {
+            return null;
+        }
         return TaskCreateResponse.convert(task);
     }
 
