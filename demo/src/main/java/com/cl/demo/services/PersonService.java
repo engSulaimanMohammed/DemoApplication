@@ -10,6 +10,8 @@ import org.apache.catalina.User;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import java.util.*;
+import com.cl.demo.entities.PhoneNumber;
+import com.cl.demo.requestobjects.PhoneNumberCreateRequest;
 
 
 @Service
@@ -43,6 +45,12 @@ public class PersonService {
         person.setEmail(requestObj.getPersonEmail());
 
         //TODO: Add Phone Number Logic in PhoneNumber Service
+
+        PhoneNumberCreateRequest phoneRequest = new PhoneNumberCreateRequest();
+        phoneRequest.setCountryCode(requestObj.getPersonCountryCode());
+        phoneRequest.setPhoneNumber(requestObj.getPersonPhoneNumber());
+        PhoneNumber phoneNumber = phoneNumberService.addPhoneNumber(phoneRequest);
+        person.setPhoneNumber(phoneNumber);
         Boolean result = DemoApplication.Person_List.add(person);
 
         if (result) {
