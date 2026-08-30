@@ -8,6 +8,8 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Date;
 import java.util.UUID;
+import com.cl.demo.requestobjects.PhoneNumberUpdateRequest;
+import com.cl.demo.utils.HelperUtils;
 
 @Service
 public class PhoneNumberService {
@@ -41,6 +43,22 @@ public class PhoneNumberService {
         }
         return resultList;  // All active phone numbers are returned.
     }
+
+
+    public PhoneNumber updatePhoneNumber(PhoneNumberUpdateRequest updateObj) {
+        PhoneNumber phoneNumber = getPhoneNumberById(updateObj.getUuid().toString());  // search the phone num.
+        if (phoneNumber == null || phoneNumber.getId() == null || !phoneNumber.getIsActive()) { // If the number is not found or is not active, we stop the update.
+            return phoneNumber;
+        }
+        DemoApplication.PhoneNumber_List.remove(phoneNumber);
+        phoneNumber.setCountryCode(HelperUtils.compare(phoneNumber.getCountryCode(), updateObj.getCountryCodeToUpdate()));
+        phoneNumber.setPhoneNumber(HelperUtils.compare(phoneNumber.getPhoneNumber(), updateObj.getPhoneNumberToUpdate()));
+        phoneNumber.setUpdatedDate(new Date());
+        DemoApplication.PhoneNumber_List.add(phoneNumber);
+        return phoneNumber;
+    }
+
+
 
 
 
