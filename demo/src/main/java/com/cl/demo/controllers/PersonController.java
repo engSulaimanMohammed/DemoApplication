@@ -27,9 +27,12 @@ public class PersonController {
 
     @GetMapping("getById")
     public PersonCreateResponse getPersonById(@RequestParam String uuid) {
-        return PersonCreateResponse.convert(personService.getPersonById(uuid));
+        Person person = personService.getPersonById(uuid);
+        if (person == null) {
+            return null;
+        }
+        return PersonCreateResponse.convert(person);
     }
-
     @GetMapping("getAll")
     public List<PersonCreateResponse> getAllPerson() {
         return PersonCreateResponse.convert(personService.getAllPersons());
