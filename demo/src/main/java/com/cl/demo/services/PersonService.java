@@ -27,6 +27,11 @@ public class PersonService {
         Map<String, String> response = new HashMap<>();
         Person person = new Person();
 
+        if (requestObj.getPersonEmail() == null || requestObj.getPersonEmail().trim().isEmpty()) {
+            response.put("error", "Email cannot be empty");
+            return response;
+        }
+
         if (!verifyUserNameAndEmail(requestObj.getPersonUserName(), requestObj.getPersonEmail())) {
             response.put("error", PERSON_USERNAME_OR_EMAIL_ALREADY_TAKEN);
             return response;
