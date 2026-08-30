@@ -14,6 +14,9 @@ import com.cl.demo.utils.HelperUtils;
 @Service
 public class PhoneNumberService {
     public PhoneNumber addPhoneNumber(PhoneNumberCreateRequest requestObj) {
+        if (requestObj.getPhoneNumber() == null) {
+            return null;
+        }
         PhoneNumber phoneNumber = new PhoneNumber();
 
         phoneNumber.setId(UUID.randomUUID());

@@ -21,6 +21,9 @@ public class PhoneNumberController {
     public PhoneNumberCreateResponse addPhoneNumber(@RequestBody PhoneNumberCreateRequest requestObj) {
         // The data the user sends is sent inside PhoneNumberCreateRequest
         PhoneNumber phoneNumber = phoneNumberService.addPhoneNumber(requestObj);
+        if (phoneNumber == null) {
+            return null;
+        }
         return PhoneNumberCreateResponse.convert(phoneNumber);
     }
 
