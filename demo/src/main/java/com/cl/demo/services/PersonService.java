@@ -54,6 +54,8 @@ public class PersonService {
         Boolean result = DemoApplication.Person_List.add(person);
 
         if (result) {
+            DemoApplication.userNames.add(requestObj.getPersonUserName());
+            DemoApplication.emails.add(requestObj.getPersonEmail());
             response.put("response", PERSON_SAVED);
         }
         return response;
