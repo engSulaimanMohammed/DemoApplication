@@ -20,4 +20,18 @@ public class PhoneNumberService {
         DemoApplication.PhoneNumber_List.add(phoneNumber);
         return phoneNumber;
     }
+
+    public PhoneNumber getPhoneNumberById(String uuid) {  // search the phone num by ID.
+        for (PhoneNumber p : DemoApplication.PhoneNumber_List) { // check from PhoneNumber_List and add to p.
+            if (p.getId().toString().equals(uuid) && p.getIsActive()) { // if the num equal and active.
+                return p; // return the num.
+            }
+        }
+        return new PhoneNumber(); // if not equal return new phone num.
+    }
+
+
+
+
+
 }
