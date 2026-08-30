@@ -93,7 +93,7 @@ public class PersonService {
     }
 
     public Boolean verifyUserNameAndEmail(String userName, String email) {
-        if (!DemoApplication.emails.add(email) || !DemoApplication.userNames.add(userName)) {
+        if (DemoApplication.emails.contains(email) || DemoApplication.userNames.contains(userName)) {
             return false;
         }
         return true;
