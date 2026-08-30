@@ -27,6 +27,9 @@ public class PhoneNumberController {
     @GetMapping("/getById")
     public PhoneNumberCreateResponse getPhoneNumberById(@RequestParam String uuid) {
         PhoneNumber phoneNumber = phoneNumberService.getPhoneNumberById(uuid);
+        if (phoneNumber == null) {
+            return null;
+        }
         return PhoneNumberCreateResponse.convert(phoneNumber);
     }
 
