@@ -6,6 +6,7 @@ import com.cl.demo.responseobjects.PhoneNumberCreateResponse;
 import com.cl.demo.services.PhoneNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
+import java.util.List;
 
 @RestController // This class means it accepts Web/API requests.
 @RequestMapping("phoneNumber") // The primary title of this Controller.
@@ -26,4 +27,12 @@ public class PhoneNumberController {
         PhoneNumber phoneNumber = phoneNumberService.getPhoneNumberById(uuid);
         return PhoneNumberCreateResponse.convert(phoneNumber);
     }
+
+    @GetMapping("/getAll")
+    public List<PhoneNumberCreateResponse> getAllPhoneNumbers() {
+        List<PhoneNumber> phoneNumbers = phoneNumberService.getAllPhoneNumbers();
+        return PhoneNumberCreateResponse.convert(phoneNumbers);
+    }
+
+
 }
