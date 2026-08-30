@@ -21,7 +21,10 @@ public class PersonCreateResponse {
         PersonCreateResponse response = new PersonCreateResponse();
         response.setPersonId(person.getId().toString());
         response.setFullName(person.getName());
-        response.setUserName(person.getUserName().getActiveUserName());
+
+        if (person.getUserName() != null) {
+            response.setUserName(person.getUserName().getActiveUserName());
+        }
         response.setEmail(person.getEmail());
 
         if (person.getPhoneNumber() != null) {
