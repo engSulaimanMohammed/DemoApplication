@@ -78,7 +78,7 @@ public class PersonService {
 
         person.setUserName(getUserNameByCompare(person.getUserName(), updateObj));
         person.setEmail(HelperUtils.compare(person.getEmail(), updateObj.getEmailToUpdate()));
-
+        person.setUpdatedDate(new Date());
         DemoApplication.Person_List.add(person);
         return person;
     }
@@ -125,9 +125,7 @@ public class PersonService {
 
 
     public Boolean deleteById(String uuid) {
-
         Person person = getPersonById(uuid);
-
         if (person == null || person.getId() == null || !person.getIsActive()) {
             return false;
         } else {
