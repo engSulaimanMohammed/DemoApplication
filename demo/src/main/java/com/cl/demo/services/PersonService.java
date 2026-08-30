@@ -53,7 +53,6 @@ public class PersonService {
         person.setName(getFullName(requestObj));
         person.setEmail(requestObj.getPersonEmail());
 
-        //TODO: Add Phone Number Logic in PhoneNumber Service
 
         PhoneNumberCreateRequest phoneRequest = new PhoneNumberCreateRequest();
         phoneRequest.setCountryCode(requestObj.getPersonCountryCode());
