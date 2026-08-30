@@ -2,7 +2,9 @@ package com.cl.demo.controllers;
 
 import com.cl.demo.entities.PhoneNumber;
 import com.cl.demo.requestobjects.PhoneNumberCreateRequest;
+import com.cl.demo.requestobjects.PhoneNumberUpdateRequest;
 import com.cl.demo.responseobjects.PhoneNumberCreateResponse;
+import com.cl.demo.responseobjects.PhoneNumberUpdateResponse;
 import com.cl.demo.services.PhoneNumberService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
@@ -32,6 +34,12 @@ public class PhoneNumberController {
     public List<PhoneNumberCreateResponse> getAllPhoneNumbers() {
         List<PhoneNumber> phoneNumbers = phoneNumberService.getAllPhoneNumbers();
         return PhoneNumberCreateResponse.convert(phoneNumbers);
+    }
+
+    @PutMapping("/update")
+    public PhoneNumberUpdateResponse updatePhoneNumber(@RequestBody PhoneNumberUpdateRequest updateObj) {
+        PhoneNumber phoneNumber = phoneNumberService.updatePhoneNumber(updateObj);
+        return PhoneNumberUpdateResponse.convert(phoneNumber);
     }
 
 
