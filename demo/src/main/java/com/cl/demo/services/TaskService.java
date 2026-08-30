@@ -64,7 +64,7 @@ public class TaskService {
                 return task;
             }
         }
-        return new Task();
+        return null;
     }
 
 
