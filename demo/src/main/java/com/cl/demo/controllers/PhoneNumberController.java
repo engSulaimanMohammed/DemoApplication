@@ -42,6 +42,9 @@ public class PhoneNumberController {
     @PutMapping("/update")
     public PhoneNumberUpdateResponse updatePhoneNumber(@RequestBody PhoneNumberUpdateRequest updateObj) {
         PhoneNumber phoneNumber = phoneNumberService.updatePhoneNumber(updateObj);
+        if (phoneNumber == null) {
+            return null;
+        }
         return PhoneNumberUpdateResponse.convert(phoneNumber);
     }
 

@@ -47,6 +47,9 @@ public class TaskController {
     @PutMapping("/update")
     public TaskUpdateResponse updateTask(@RequestBody TaskUpdateRequest requestObj) {
         Task task = taskService.updateTask(requestObj);
+        if (task == null) {
+            return null;
+        }
         return TaskUpdateResponse.convert(task);
     }
 
