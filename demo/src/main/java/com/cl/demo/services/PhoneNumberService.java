@@ -4,6 +4,8 @@ import com.cl.demo.DemoApplication;
 import com.cl.demo.entities.PhoneNumber;
 import com.cl.demo.requestobjects.PhoneNumberCreateRequest;
 import org.springframework.stereotype.Service;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Date;
 import java.util.UUID;
 
@@ -28,6 +30,16 @@ public class PhoneNumberService {
             }
         }
         return new PhoneNumber(); // if not equal return new phone num.
+    }
+
+    public List<PhoneNumber> getAllPhoneNumbers() {
+        List<PhoneNumber> resultList = new ArrayList<>(); // create new empty list.
+        for (PhoneNumber p : DemoApplication.PhoneNumber_List) { // It goes through all the phone numbers.
+            if (p.getIsActive()) { // check if the num active.
+                resultList.add(p);  // He adds it to the list of results.
+            }
+        }
+        return resultList;  // All active phone numbers are returned.
     }
 
 
