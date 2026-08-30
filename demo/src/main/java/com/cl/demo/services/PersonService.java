@@ -65,7 +65,7 @@ public class PersonService {
                 return p;
             }
         }
-        return new Person();
+        return null;
     }
 
     public Person updatePerson(PersonUpdateRequest updateObj) {
@@ -127,12 +127,8 @@ public class PersonService {
 
         Person person = getPersonById(uuid);
 
-        if (person == null
-                || person.getId() == null
-                || person.getIsActive() != true) {
-
+        if (person == null || person.getId() == null || person.getIsActive() != true) {
             return false;
-
         } else {
             DemoApplication.Person_List.remove(person);
             person.setIsActive(false);
