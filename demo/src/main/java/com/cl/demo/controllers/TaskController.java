@@ -12,6 +12,8 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 import java.util.Map;
 
+@RestController
+@RequestMapping("task")
 public class TaskController {
 
     // To connect TaskController with TaskService.
@@ -50,29 +52,4 @@ public class TaskController {
     public Boolean deleteById(@RequestParam String id) {
         return taskService.deleteById(id);
     }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
