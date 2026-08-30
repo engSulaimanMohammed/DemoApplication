@@ -32,6 +32,11 @@ public class PersonService {
             return response;
         }
 
+        if (requestObj.getPersonPhoneNumber() == null) {
+            response.put("error", "Phone number cannot be empty");
+            return response;
+        }
+
         if (!verifyUserNameAndEmail(requestObj.getPersonUserName(), requestObj.getPersonEmail())) {
             response.put("error", PERSON_USERNAME_OR_EMAIL_ALREADY_TAKEN);
             return response;
