@@ -21,8 +21,10 @@ public class PersonUpdateResponse {
     public static PersonUpdateResponse covert(Person person) {
         PersonUpdateResponse response = new PersonUpdateResponse();
         response.setPersonId(person.getId().toString());
-        response.setUserName(person.getUserName().getActiveUserName());
-        response.setEmail(person.getEmail());
+
+        if (person.getUserName() != null) {
+            response.setUserName(person.getUserName().getActiveUserName());
+        }        response.setEmail(person.getEmail());
         return response;
     }
 
